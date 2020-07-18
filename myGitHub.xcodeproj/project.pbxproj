@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C41E953924C30B2B002FFC71 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E953824C30B2B002FFC71 /* DataFetcher.swift */; };
 		C41E953B24C30B75002FFC71 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E953A24C30B75002FFC71 /* LoginViewModel.swift */; };
+		C41E953E24C32FF8002FFC71 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E953D24C32FF8002FFC71 /* FeedView.swift */; };
 		C428262824C08BBF009EFDC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428262724C08BBF009EFDC7 /* AppDelegate.swift */; };
 		C428262A24C08BBF009EFDC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428262924C08BBF009EFDC7 /* SceneDelegate.swift */; };
 		C428262C24C08BBF009EFDC7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428262B24C08BBF009EFDC7 /* LoginView.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		C41E953824C30B2B002FFC71 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		C41E953A24C30B75002FFC71 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C41E953D24C32FF8002FFC71 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		C428262424C08BBF009EFDC7 /* myGitHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myGitHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C428262724C08BBF009EFDC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C428262924C08BBF009EFDC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				C428262B24C08BBF009EFDC7 /* LoginView.swift */,
+				C41E953D24C32FF8002FFC71 /* FeedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				C428262A24C08BBF009EFDC7 /* SceneDelegate.swift in Sources */,
 				C428262C24C08BBF009EFDC7 /* LoginView.swift in Sources */,
 				C41E953B24C30B75002FFC71 /* LoginViewModel.swift in Sources */,
+				C41E953E24C32FF8002FFC71 /* FeedView.swift in Sources */,
 				C41E953924C30B2B002FFC71 /* DataFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

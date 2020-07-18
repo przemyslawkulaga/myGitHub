@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var login: String = ""
-    @State private var password: String = ""
+    @State var isLogged = false
+    @State private var login = ""
+    @State private var password = ""
     var viewModel: LoginViewModel
     
     init(viewModel: LoginViewModel) {
@@ -19,10 +20,14 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            LogoView()
-            LoginTextField(loginValue: $login)
-            PasswordTextField(passValue: $password)
-            LoginButton()
+            if !isLogged {
+                LogoView()
+                LoginTextField(loginValue: $login)
+                PasswordTextField(passValue: $password)
+                LoginButton(isLogged: $isLogged)
+            } else {
+                FeedView()
+            }
         }
     }
 }
@@ -76,8 +81,12 @@ struct PasswordTextField: View {
 }
 
 struct LoginButton: View {
+    @Binding var isLogged: Bool
+    
     var body: some View {
-        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+        Button(action: {
+            self.isLogged = true
+        }) {
             Text("Log in")
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
