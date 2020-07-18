@@ -26,7 +26,7 @@ struct LoginView: View {
                 PasswordTextField(passValue: $password)
                 LoginButton(isLogged: $isLogged)
             } else {
-                FeedView()
+                TabBarView()
             }
         }
     }
