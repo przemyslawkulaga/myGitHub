@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C41E953924C30B2B002FFC71 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E953824C30B2B002FFC71 /* DataFetcher.swift */; };
+		C41E953B24C30B75002FFC71 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41E953A24C30B75002FFC71 /* LoginViewModel.swift */; };
 		C428262824C08BBF009EFDC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428262724C08BBF009EFDC7 /* AppDelegate.swift */; };
 		C428262A24C08BBF009EFDC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428262924C08BBF009EFDC7 /* SceneDelegate.swift */; };
-		C428262C24C08BBF009EFDC7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428262B24C08BBF009EFDC7 /* ContentView.swift */; };
+		C428262C24C08BBF009EFDC7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C428262B24C08BBF009EFDC7 /* LoginView.swift */; };
 		C428262E24C08BC1009EFDC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C428262D24C08BC1009EFDC7 /* Assets.xcassets */; };
 		C428263124C08BC1009EFDC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C428263024C08BC1009EFDC7 /* Preview Assets.xcassets */; };
 		C428263424C08BC1009EFDC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C428263224C08BC1009EFDC7 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C41E953824C30B2B002FFC71 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		C41E953A24C30B75002FFC71 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C428262424C08BBF009EFDC7 /* myGitHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myGitHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C428262724C08BBF009EFDC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C428262924C08BBF009EFDC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C428262B24C08BBF009EFDC7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C428262B24C08BBF009EFDC7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C428262D24C08BC1009EFDC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C428263024C08BC1009EFDC7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C428263324C08BC1009EFDC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +41,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C41E953324C305EC002FFC71 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C41E953424C305F5002FFC71 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C41E953A24C30B75002FFC71 /* LoginViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C41E953524C305FE002FFC71 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C428262B24C08BBF009EFDC7 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C41E953624C30616002FFC71 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C41E953824C30B2B002FFC71 /* DataFetcher.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C41E953C24C30D96002FFC71 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C428262724C08BBF009EFDC7 /* AppDelegate.swift */,
+				C428262924C08BBF009EFDC7 /* SceneDelegate.swift */,
+				C428263524C08BC1009EFDC7 /* Info.plist */,
+				C428262D24C08BC1009EFDC7 /* Assets.xcassets */,
+				C428263224C08BC1009EFDC7 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C428261B24C08BBF009EFDC7 = {
 			isa = PBXGroup;
 			children = (
@@ -56,12 +103,11 @@
 		C428262624C08BBF009EFDC7 /* myGitHub */ = {
 			isa = PBXGroup;
 			children = (
-				C428262724C08BBF009EFDC7 /* AppDelegate.swift */,
-				C428262924C08BBF009EFDC7 /* SceneDelegate.swift */,
-				C428262B24C08BBF009EFDC7 /* ContentView.swift */,
-				C428262D24C08BC1009EFDC7 /* Assets.xcassets */,
-				C428263224C08BC1009EFDC7 /* LaunchScreen.storyboard */,
-				C428263524C08BC1009EFDC7 /* Info.plist */,
+				C41E953624C30616002FFC71 /* Helpers */,
+				C41E953324C305EC002FFC71 /* Models */,
+				C41E953424C305F5002FFC71 /* ViewModels */,
+				C41E953524C305FE002FFC71 /* Views */,
+				C41E953C24C30D96002FFC71 /* Supporting Files */,
 				C428262F24C08BC1009EFDC7 /* Preview Content */,
 			);
 			path = myGitHub;
@@ -148,7 +194,9 @@
 			files = (
 				C428262824C08BBF009EFDC7 /* AppDelegate.swift in Sources */,
 				C428262A24C08BBF009EFDC7 /* SceneDelegate.swift in Sources */,
-				C428262C24C08BBF009EFDC7 /* ContentView.swift in Sources */,
+				C428262C24C08BBF009EFDC7 /* LoginView.swift in Sources */,
+				C41E953B24C30B75002FFC71 /* LoginViewModel.swift in Sources */,
+				C41E953924C30B2B002FFC71 /* DataFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +336,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"myGitHub/Preview Content\"";
 				DEVELOPMENT_TEAM = V26939G26U;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = myGitHub/Info.plist;
+				INFOPLIST_FILE = "myGitHub/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +356,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"myGitHub/Preview Content\"";
 				DEVELOPMENT_TEAM = V26939G26U;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = myGitHub/Info.plist;
+				INFOPLIST_FILE = "myGitHub/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
