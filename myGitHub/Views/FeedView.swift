@@ -22,6 +22,7 @@ struct GridTestData {
 
 struct FeedView: View {
     @State var gridSelected = false
+    @State var showingFilters = false
     
     var testList = [
         TestData(name: "Hi!", type: "Comment"),
@@ -50,7 +51,7 @@ struct FeedView: View {
                     ListView(testList: testList)
                 }
                 
-                FilterButton()
+                FilterButton(showingFilters: $showingFilters)
             }
             .navigationBarTitle("Feed")
             .navigationBarItems(leading:
@@ -60,7 +61,7 @@ struct FeedView: View {
                     Image(systemName: "escape")
                 }), trailing:
                 Button(action: {
-                    self.gridSelected = !self.gridSelected
+                    self.gridSelected.toggle()
                 }, label: {
                     gridSelected ? Image(systemName: "list.dash") : Image(systemName: "square.grid.2x2")
                 })
@@ -120,13 +121,15 @@ struct GridView: View {
 }
 
 struct FilterButton: View {
+    @Binding var showingFilters: Bool
+    
     var body: some View {
         VStack {
             Spacer()
             HStack {
                 Spacer()
                 Button(action: {
-                    //OPEN FILTERS
+                    self.showingFilters.toggle()
                 }) {
                     Image(systemName: "doc.text.magnifyingglass")
                         .padding()
@@ -136,8 +139,48 @@ struct FilterButton: View {
                                 .foregroundColor(.black)
                                 .shadow(radius: 2)
                     )
+                }.sheet(isPresented: $showingFilters) {
+                    FilterView()
                 }.padding()
             }
+        }
+    }
+}
+
+struct FilterView: View {
+    var typeArray = ["Comments", "Likes"]
+    var dateArray = ["Today", "Yesterday", "Older"]
+    
+    @State private var selectedType = 0
+    @State private var selectedDate = 0
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    Picker(selection: $selectedType, label: Text("Type")) {
+                        ForEach(0 ..< typeArray.count) {
+                            Text(self.typeArray[$0])
+                            
+                        }
+                    }
+                    Picker(selection: $selectedDate, label: Text("Date")) {
+                        ForEach(0 ..< dateArray.count) {
+                            Text(self.dateArray[$0])
+                            
+                        }
+                    }
+                }
+            }
+            .navigationBarTitle("Choose your filters", displayMode: .inline)
+            .navigationBarItems(trailing:
+                Button(action: {
+                    ///CLOSE FILTERS
+                }, label: {
+                    Image(systemName: "checkmark")
+                        .colorMultiply(.black)
+                })
+            )
         }
     }
 }
