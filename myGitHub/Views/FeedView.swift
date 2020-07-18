@@ -148,11 +148,17 @@ struct FilterButton: View {
 }
 
 struct FilterView: View {
-    var typeArray = ["Comments", "Likes"]
-    var dateArray = ["Today", "Yesterday", "Older"]
+    var typeArray = ["All", "Comments", "Likes"]
+    var dateArray = ["All", "Today", "Older"]
     
     @State private var selectedType = 0
     @State private var selectedDate = 0
+    
+    init() {
+        UISegmentedControl.appearance().selectedSegmentTintColor = .black
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+    }
     
     var body: some View {
         NavigationView {
@@ -161,15 +167,14 @@ struct FilterView: View {
                     Picker(selection: $selectedType, label: Text("Type")) {
                         ForEach(0 ..< typeArray.count) {
                             Text(self.typeArray[$0])
-                            
                         }
-                    }
+                    }.pickerStyle(SegmentedPickerStyle())
                     Picker(selection: $selectedDate, label: Text("Date")) {
                         ForEach(0 ..< dateArray.count) {
                             Text(self.dateArray[$0])
                             
                         }
-                    }
+                    }.pickerStyle(SegmentedPickerStyle())
                 }
             }
             .navigationBarTitle("Choose your filters", displayMode: .inline)
