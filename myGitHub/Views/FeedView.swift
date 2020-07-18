@@ -8,37 +8,56 @@
 
 import SwiftUI
 
-struct testData {
+struct TestData {
     let id = UUID()
     let name: String
     let type: String
 }
 
+struct GridTestData {
+    let id = UUID()
+    let leftTestData: TestData?
+    let rightTestData: TestData?
+}
+
 struct FeedView: View {
+    @State var gridSelected = false
+    
     var testList = [
-        testData(name: "Hi!", type: "Comment"),
-        testData(name: "Hello!", type: "Comment"),
-        testData(name: "Hola!", type: "Comment"),
-        testData(name: "I like this!", type: "Like"),
-        testData(name: "Check my profile!", type: "Comment"),
-        testData(name: "Not that good!", type: "Dislike"),
-        testData(name: "Great code!", type: "Comment"),
-        testData(name: "Do it better next time!", type: "Comment")
+        TestData(name: "Hi!", type: "Comment"),
+        TestData(name: "Hello!", type: "Comment"),
+        TestData(name: "Hola!", type: "Comment"),
+        TestData(name: "I like this!", type: "Like"),
+        TestData(name: "Check my profile!", type: "Comment"),
+        TestData(name: "Not that good!", type: "Dislike"),
+        TestData(name: "Great code!", type: "Comment"),
+        TestData(name: "Do it better next time!", type: "Comment")
+    ]
+    
+    var gridTestList = [
+        GridTestData(leftTestData: TestData(name: "Hi!", type: "Comment"), rightTestData: TestData(name: "Hello!", type: "Comment")),
+        GridTestData(leftTestData: TestData(name: "Hola!", type: "Comment"), rightTestData: TestData(name: "I like this!", type: "Like")),
+        GridTestData(leftTestData: TestData(name: "Check my profile!", type: "Comment"), rightTestData: TestData(name: "Not that good!", type: "Dislike")),
+        GridTestData(leftTestData: TestData(name: "Great code!", type: "Comment"), rightTestData: nil)
     ]
     
     var body: some View {
-        List {
-            ForEach(testList, id: \.id) { item in
-                VStack {
-                    Text(item.type)
-                        .foregroundColor(.gray)
-                        .font(.system(size: 8))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    Text(item.name)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+        NavigationView {
+            VStack {
+                if gridSelected {
+                    GridView(gridTestList: gridTestList)
+                } else {
+                    ListView(testList: testList)
                 }
             }
+            .navigationBarTitle("Feed")
+            .navigationBarItems(trailing:
+                Button(action: {
+                    self.gridSelected = !self.gridSelected
+                }, label: {
+                    gridSelected ? Image(systemName: "list.dash") : Image(systemName: "square.grid.2x2")
+                })
+            )
         }
     }
 }
@@ -46,5 +65,49 @@ struct FeedView: View {
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
         FeedView()
+    }
+}
+
+struct FeedRow: View {
+    var nameValue: String?
+    var typeValue: String?
+    
+    var body: some View {
+        VStack {
+            Text(typeValue ?? "")
+                .foregroundColor(.gray)
+                .font(.system(size: 8))
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Text(nameValue ?? "")
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}
+
+struct ListView: View {
+    var testList: [TestData]
+    
+    var body: some View {
+        List {
+            ForEach(testList, id: \.id) { item in
+                FeedRow(nameValue: item.name, typeValue: item.type)
+            }
+        }
+    }
+}
+
+struct GridView: View {
+    var gridTestList: [GridTestData]
+    
+    var body: some View {
+        List {
+            ForEach(gridTestList, id: \.id) { item in
+                HStack {
+                    FeedRow(nameValue: item.leftTestData?.name, typeValue: item.leftTestData?.type)
+                    FeedRow(nameValue: item.rightTestData?.name, typeValue: item.rightTestData?.type)
+                }
+            }
+        }
     }
 }
