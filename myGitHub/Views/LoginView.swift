@@ -96,5 +96,6 @@ struct LoginButton: View {
                         .foregroundColor(.black)
             )
         }.padding()
+        .shadow(radius: 2)
     }
 }

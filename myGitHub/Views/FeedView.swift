@@ -43,15 +43,22 @@ struct FeedView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            ZStack {
                 if gridSelected {
                     GridView(gridTestList: gridTestList)
                 } else {
                     ListView(testList: testList)
                 }
+                
+                FilterButton()
             }
             .navigationBarTitle("Feed")
-            .navigationBarItems(trailing:
+            .navigationBarItems(leading:
+                Button(action: {
+                    ///LOGOUT
+                }, label: {
+                    Image(systemName: "escape")
+                }), trailing:
                 Button(action: {
                     self.gridSelected = !self.gridSelected
                 }, label: {
@@ -107,6 +114,29 @@ struct GridView: View {
                     FeedRow(nameValue: item.leftTestData?.name, typeValue: item.leftTestData?.type)
                     FeedRow(nameValue: item.rightTestData?.name, typeValue: item.rightTestData?.type)
                 }
+            }
+        }
+    }
+}
+
+struct FilterButton: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                Button(action: {
+                    //OPEN FILTERS
+                }) {
+                    Image(systemName: "doc.text.magnifyingglass")
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(
+                            Circle()
+                                .foregroundColor(.black)
+                                .shadow(radius: 2)
+                    )
+                }.padding()
             }
         }
     }
