@@ -49,9 +49,11 @@ struct RepoRow: View {
     var nameValue: String?
     
     var body: some View {
-        VStack {
-            Text(nameValue ?? "")
-                .frame(maxWidth: .infinity, alignment: .leading)
+        NavigationLink(destination: RepositoryDetailView()) {
+            VStack {
+                Text(nameValue ?? "")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
     }
 }
