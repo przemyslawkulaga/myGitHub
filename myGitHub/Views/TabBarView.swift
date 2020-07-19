@@ -39,12 +39,6 @@ struct TabBarView: View {
     }
 }
 
-struct TabBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBarView(viewModel: TabBarViewModel())
-    }
-}
-
 struct LogOutButton: View {
     @ObservedObject var viewModel: TabBarViewModel
     @State private var showAlert = false
@@ -76,5 +70,11 @@ struct LogOutButton: View {
                 }
             }
         }
+    }
+}
+
+struct TabBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        TabBarView(viewModel: TabBarViewModel())
     }
 }

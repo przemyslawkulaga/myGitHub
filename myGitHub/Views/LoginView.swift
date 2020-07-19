@@ -32,13 +32,6 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewModel = LoginViewModel()
-        return LoginView(viewModel: viewModel)
-    }
-}
-
 struct LogoView: View {
     var body: some View {
         VStack {
@@ -57,7 +50,7 @@ struct LoginTextField: View {
     var body: some View {
         HStack {
             Image(systemName: "envelope")
-            TextField("E-mail", text: $loginValue)
+            TextField("WIP - Login with button below", text: $loginValue)
         }
         .padding()
         .overlay(RoundedRectangle(cornerRadius: 4).stroke(lineWidth: 2))
@@ -71,7 +64,7 @@ struct PasswordTextField: View {
     var body: some View {
         HStack {
             Image(systemName: "lock")
-            SecureField("Password", text: $passValue)
+            SecureField("WIP - Login with button below", text: $passValue)
         }
         .padding()
         .overlay(RoundedRectangle(cornerRadius: 4).stroke(lineWidth: 2))
@@ -86,7 +79,7 @@ struct LoginButton: View {
         Button(action: {
             self.viewModel.loginUser()
         }) {
-            Text("Log in")
+            Text("Log in with GitHub")
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
                 .foregroundColor(.white)
@@ -96,5 +89,12 @@ struct LoginButton: View {
             )
         }.padding()
         .shadow(radius: 2)
+    }
+}
+
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = LoginViewModel()
+        return LoginView(viewModel: viewModel)
     }
 }

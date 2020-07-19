@@ -15,7 +15,6 @@ struct RepoTestData {
 
 struct RepositoryView: View {
     @State var searchingPhrase = ""
-    
     @ObservedObject var viewModel: RepositoryViewModel
     
     init(viewModel: RepositoryViewModel) {
@@ -42,12 +41,6 @@ struct RepositoryView: View {
             .navigationBarTitle("Repos")
         }
         
-    }
-}
-
-struct RepositoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        RepositoryView(viewModel: RepositoryViewModel())
     }
 }
 
@@ -81,5 +74,11 @@ struct SearchBar: View {
                     .foregroundColor(.black)
             }.padding(.trailing)
         }
+    }
+}
+
+struct RepositoryView_Previews: PreviewProvider {
+    static var previews: some View {
+        RepositoryView(viewModel: RepositoryViewModel())
     }
 }

@@ -23,7 +23,6 @@ struct GridTestData {
 struct FeedView: View {
     @State var gridSelected = false
     @State var showingFilters = false
-    
     @ObservedObject var viewModel: FeedViewModel
     
     init(viewModel: FeedViewModel) {
@@ -68,12 +67,6 @@ struct FeedView: View {
                 })
             )
         }
-    }
-}
-
-struct FeedView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeedView(viewModel: FeedViewModel())
     }
 }
 
@@ -190,5 +183,11 @@ struct FilterView: View {
                 })
             )
         }
+    }
+}
+
+struct FeedView_Previews: PreviewProvider {
+    static var previews: some View {
+        FeedView(viewModel: FeedViewModel())
     }
 }
