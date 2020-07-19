@@ -12,7 +12,7 @@ struct LoginView: View {
     @State var isLogged = false
     @State private var login = ""
     @State private var password = ""
-    var viewModel: LoginViewModel
+    @ObservedObject var viewModel: LoginViewModel
     
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -20,11 +20,11 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            if !isLogged {
+            if !viewModel.isLoged {
                 LogoView()
                 LoginTextField(loginValue: $login)
                 PasswordTextField(passValue: $password)
-                LoginButton(isLogged: $isLogged)
+                LoginButton(viewModel: viewModel)
             } else {
                 TabBarView()
             }
@@ -34,8 +34,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        let fetcher = DataFetcher()
-        let viewModel = LoginViewModel(dataFetcher: fetcher)
+        let viewModel = LoginViewModel()
         return LoginView(viewModel: viewModel)
     }
 }
@@ -81,11 +80,11 @@ struct PasswordTextField: View {
 }
 
 struct LoginButton: View {
-    @Binding var isLogged: Bool
+    @ObservedObject var viewModel: LoginViewModel
     
     var body: some View {
         Button(action: {
-            self.isLogged = true
+            self.viewModel.loginUser()
         }) {
             Text("Log in")
                 .frame(minWidth: 0, maxWidth: .infinity)

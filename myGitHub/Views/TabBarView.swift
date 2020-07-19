@@ -11,13 +11,13 @@ import SwiftUI
 struct TabBarView: View {
     var body: some View {
         TabView {
-            FeedView()
+            FeedView(viewModel: FeedViewModel())
                 .tabItem {
                     Image(systemName: "list.dash")
                     Text("Feed")
             }
             
-            RepositoryView()
+            RepositoryView(viewModel: RepositoryViewModel())
                 .tabItem {
                     Image(systemName: "folder")
                     Text("Repository")

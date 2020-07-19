@@ -24,6 +24,12 @@ struct FeedView: View {
     @State var gridSelected = false
     @State var showingFilters = false
     
+    @ObservedObject var viewModel: FeedViewModel
+    
+    init(viewModel: FeedViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var testList = [
         TestData(name: "Hi!", type: "Comment"),
         TestData(name: "Hello!", type: "Comment"),
@@ -72,7 +78,7 @@ struct FeedView: View {
 
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedView()
+        FeedView(viewModel: FeedViewModel())
     }
 }
 

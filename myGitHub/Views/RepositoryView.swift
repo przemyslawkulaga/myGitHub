@@ -16,6 +16,12 @@ struct RepoTestData {
 struct RepositoryView: View {
     @State var searchingPhrase = ""
     
+    @ObservedObject var viewModel: RepositoryViewModel
+    
+    init(viewModel: RepositoryViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var testList = [
         RepoTestData(name: "Repo number 1"),
         RepoTestData(name: "Repo number 2"),
@@ -28,7 +34,7 @@ struct RepositoryView: View {
             VStack {
                 SearchBar(text: $searchingPhrase)
                 List {
-                    ForEach(testList, id: \.id) { item in
+                    ForEach(viewModel.repos, id: \.id) { item in
                         RepoRow(nameValue: item.name)
                     }
                 }
@@ -41,7 +47,7 @@ struct RepositoryView: View {
 
 struct RepositoryView_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryView()
+        RepositoryView(viewModel: RepositoryViewModel())
     }
 }
 

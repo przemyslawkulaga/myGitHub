@@ -7,11 +7,18 @@
 //
 
 import Foundation
+import OAuthSwift
+import Combine
+import KeychainAccess
 
-class LoginViewModel {
-    private let dataFetcher: DataFetchable
-
-    init(dataFetcher: DataFetchable) {
-      self.dataFetcher = dataFetcher
+class LoginViewModel: ObservableObject {
+    @Published var isLoged = false
+    var cancellationToken: AnyCancellable?
+    
+    func loginUser() {
+        cancellationToken = GitHubAPI.shared.authenticate()
+            .sink() { result in
+                self.isLoged = result
+        }
     }
 }
