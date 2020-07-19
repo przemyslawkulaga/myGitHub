@@ -60,12 +60,7 @@ struct FeedView: View {
                 FilterButton(showingFilters: $showingFilters)
             }
             .navigationBarTitle("Feed")
-            .navigationBarItems(leading:
-                Button(action: {
-                    ///LOGOUT
-                }, label: {
-                    Image(systemName: "escape")
-                }), trailing:
+            .navigationBarItems(trailing:
                 Button(action: {
                     self.gridSelected.toggle()
                 }, label: {
@@ -147,7 +142,9 @@ struct FilterButton: View {
                     )
                 }.sheet(isPresented: $showingFilters) {
                     FilterView()
-                }.padding()
+                }
+                .padding()
+                .padding(.bottom, 56)
             }
         }
     }

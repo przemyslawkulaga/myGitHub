@@ -26,7 +26,7 @@ struct LoginView: View {
                 PasswordTextField(passValue: $password)
                 LoginButton(viewModel: viewModel)
             } else {
-                TabBarView()
+                TabBarView(viewModel: TabBarViewModel())
             }
         }
     }

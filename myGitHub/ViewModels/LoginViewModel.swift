@@ -15,6 +15,14 @@ class LoginViewModel: ObservableObject {
     @Published var isLoged = false
     var cancellationToken: AnyCancellable?
     
+    init() {
+        if let token = Keychain(service: "com.peka.myGitHub")["token"], !token.isEmpty {
+            isLoged = true
+        } else {
+            isLoged = false
+        }
+    }
+    
     func loginUser() {
         cancellationToken = GitHubAPI.shared.authenticate()
             .sink() { result in
